@@ -19,7 +19,8 @@ async def connect(sid, environ, auth):
 
 @sio_server.event
 async def session_request(sid, data):
-    room = "room_id" # data['session_id']
+    room = "room_id"
+    # room = data['session_id']
     print("Joining room:", room)
     await sio_server.enter_room(sid, room)
     # sets the room_id/session_id
