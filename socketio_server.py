@@ -31,6 +31,11 @@ async def session_request(sid, data):
 async def user_uttered(sid, data):
     await sio_server.emit("bot_uttered", {'text': f"{data['message']}-response"}, room="room_id")
 
+@sio_server.event
+async def video_stream(sid, data):
+    print(data)
+    await sio_server.emit("bot_uttered", {'text': f"got image"}, room="room_id")
+
 
 @sio_server.event
 async def disconnect(sid):
